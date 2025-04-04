@@ -1,0 +1,110 @@
+services:
+  ha:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true    
+    networks:
+      net1:
+        ipv4_address: 10.0.1.2
+
+  r1:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true
+    networks:
+      net1:
+        ipv4_address: 10.0.1.1
+      net2:
+        ipv4_address: 10.0.2.1
+      net3:
+        ipv4_address: 10.0.3.1
+
+  r2:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true
+    networks:
+      net2:
+        ipv4_address: 10.0.2.2
+      net4:
+        ipv4_address: 10.0.4.1
+
+  r3:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true
+    networks:
+      net4:
+        ipv4_address: 10.0.4.2
+      net5:
+        ipv4_address: 10.0.5.2
+      net6:
+        ipv4_address: 10.0.6.1
+
+  r4:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true
+    networks:
+      net3:
+        ipv4_address: 10.0.3.2
+      net5:
+        ipv4_address: 10.0.5.1
+
+  hb:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true    
+    networks:
+      net6:
+        ipv4_address: 10.0.6.2
+
+networks:
+  net1:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.1.0/24
+  net2:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.2.0/24
+  net3:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.3.0/24
+  net4:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.4.0/24
+  net5:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.5.0/24
+  net6:
+    ipam:
+      driver: default
+      config:
+        - subnet: 10.0.6.0/24
