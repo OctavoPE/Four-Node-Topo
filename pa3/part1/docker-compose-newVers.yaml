@@ -80,31 +80,31 @@ services:
 networks:
   net1:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.1.0/24
   net2:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.2.0/24
   net3:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.3.0/24
   net4:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.4.0/24
   net5:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.5.0/24
   net6:
     ipam:
-      driver: default
+      driver: bridge
       config:
         - subnet: 10.0.6.0/24
