@@ -1,0 +1,32 @@
+services:
+  r3:
+    build: .
+    stdin_open: true
+    tty: true
+    cap_add:
+      - ALL
+    privileged: true
+    networks:
+      net4:
+        ipv4_address: 10.0.4.2
+      net5:
+        ipv4_address: 10.0.5.2
+      net6:
+        ipv4_address: 10.0.6.1
+
+networks:
+  net4:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.4.0/24
+  net5:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.5.0/24
+  net6:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.6.0/24
